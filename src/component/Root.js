@@ -8,6 +8,7 @@ import './../style/style.scss';
 export default function Root() {
     const { userInfo } = useSelector(state=>state.serverData);
 
+
     return (
             <HashRouter getUserConfirmation={(message, callback) => {
                 const allowTransition = window.confirm(message);

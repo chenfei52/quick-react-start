@@ -9,7 +9,9 @@ export default function useUserInfoApi(){
     });
 
     useEffect(()=>{
-        console.log('副作用执行');
+        setTimeout(()=>{
+            setUserInfo({ name: '名称被修改' })
+        })
     }, [])
 
     return {
