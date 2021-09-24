@@ -56,7 +56,6 @@ export function formatTime(time, formateStr) {
  * ]
  */
 export function getMothDateList(dateObj, firstIsZero){
-    dateObj = new Date('2021-12-01');
     if (!(dateObj instanceof Date)) return [];
     const year = dateObj.getFullYear(),
         month = dateObj.getMonth() + 1,
