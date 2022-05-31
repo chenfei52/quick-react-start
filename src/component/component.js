@@ -4,7 +4,7 @@
 
 import React, { lazy } from 'react';
 
-export Header from './Header';
+export Header from './common/Header';
 export Loading from './common/Loading';
 
 

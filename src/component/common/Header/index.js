@@ -23,8 +23,8 @@ export default function Header() {
     return (
         <div className="header">
             这是头部, 用户名为
-            <Link to="/router1">路由1</Link>
-            <Link to="/router2">路由2</Link>
+            <Link to="router1">路由1</Link>
+            <Link to="router2">路由2</Link>
             {
                 hideTopMenu ? '隐藏' : '显示'
             }

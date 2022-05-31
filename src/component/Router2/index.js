@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Input } from 'antd';
-import { withRouter } from "react-router-dom";
 import './index.scss';
 
 function Router2(){
@@ -25,4 +24,4 @@ function Router2(){
         </div>
     )
 }
-export default withRouter(Router2);
+export default Router2;
