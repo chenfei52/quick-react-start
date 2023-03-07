@@ -1,17 +1,16 @@
 {
     "parser": "babel-eslint",
-    //rules中的值0、1、2分别表示不开启检查、警告、错误
     "rules": {
         "no-console": 1,
         "react-hooks/rules-of-hooks": 2,
-        "react/no-unknown-property": 0, //防止使用未知的DOM属性
-        "react/prop-types": 0, //防止在React组件定义中丢失props验证
-        "no-unused-vars": 1
+        "react/no-unknown-property": 0,
+        "react/prop-types": 0,
+        "no-unused-vars": 1,
+        "no-debugger": 1
     },
     "plugins": [
         "react-hooks"
     ],
-    //使用默认的规则
     "extends":  [
         "eslint:recommended",
         "plugin:react/recommended"
@@ -25,15 +24,17 @@
         "es6": true,
         "mocha": true
     },
-    //true允许被重写 false不允许
     "globals": {
-//        "var1": true,
-//        "var2": false
+        // "var1": true,
     }
+    //true允许被重写 false不允许
 }
 
+//globals
 
 
+
+//rules中的值0、1、2分别表示不开启检查、警告、错误
 //rules 常用
 
 //"quotes": [2, "single"], //单引号

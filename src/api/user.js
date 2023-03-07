@@ -4,7 +4,7 @@ import {setUserinfo} from "../redux/userSlice";
 const userApi = {
     getUserInfo: ()=>{
         return dispatch=>{
-            return new Promise(((resolve, reject) => {
+            return new Promise(((resolve) => {
                 setTimeout(()=>{
                     dispatch(setUserinfo({
                         name: '陈非',

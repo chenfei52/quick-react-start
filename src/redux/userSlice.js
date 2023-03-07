@@ -9,7 +9,6 @@ export const userSlice = createSlice({
     initialState: INIT_STATE,
     reducers: {
         setUserinfo: (state, action)=>{
-            console.log(action);
             state.userInfo = action.payload;
         }
     }

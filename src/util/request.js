@@ -12,7 +12,7 @@ import { message } from 'antd';
  *          hideLoadingText: bool 是否隐藏加载提示
  *          loadingText: str 加载时的文字提示
  *          blobData: bool  返回是否为二进制数据
- *          noAuth: bool   无用户验证头
+ *          cancelKey: str 为真时会取消正在请求中的同样的key的接口
  *        }
  * @param success   成功回调
  * @param error     错误回调
@@ -24,6 +24,17 @@ export default function Req(options, success, error){
         headers: {}
         // credentials: 'include'
     };
+
+    if(options.cancelKey){
+        if(!window.fetchList) window.fetchList = {};
+        if(window.fetchList[options.cancelKey]){
+            window.fetchList[options.cancelKey].abort();
+        }
+        let controller = new AbortController();
+        request.signal = controller.signal;
+        window.fetchList[options.cancelKey] = controller;
+    }
+
     if(options.headers){
         for(let key in options.headers){
             request.headers[key] = options.headers[key];

@@ -8,7 +8,6 @@ export default function Router1() {
 
     const clickFun = (event)=>{
         console.log(event.target);
-        console.log(event.currentTarget);
     }
 
     return (
