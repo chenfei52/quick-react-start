@@ -2,29 +2,22 @@
  * Created by chenfei on 2018/2/5.
  */
 
-import React, { Suspense } from 'react';
-import BasicLayout from './component/BasicLayout';
+import React from 'react';
 import {Provider} from 'react-redux';
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import initStore from '@src/redux/initStore';
 import ReactDom from 'react-dom/client';
-import {HashRouter, Route, Routes} from 'react-router-dom';
-import { Router1, Router2, Loading } from './component/component';
-
+import AllRoutes from './AllRoutes';
 
 const store = initStore();
+const queryClient = new QueryClient();
 
 let ReactRoot = ReactDom.createRoot(document.getElementById('container'));
 
-ReactRoot.render(<Provider store={ store }>
-    <HashRouter>
-        <Suspense fallback={ <Loading /> }>
-            <Routes>
-                <Route path="/" element={ <BasicLayout /> }>
-                    <Route path="router1" element={ <Router1 /> } />
-                    <Route path="router2" element={ <Router2 /> } />
-                </Route>
-                <Route path={'*'} element={<div>未找到页面</div>} />
-            </Routes>
-        </Suspense>
-    </HashRouter>
-</Provider>);
+ReactRoot.render(
+    <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+            <AllRoutes/>
+        </Provider>
+    </QueryClientProvider>
+);
