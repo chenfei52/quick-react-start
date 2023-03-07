@@ -1,13 +1,17 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import globalReducer from './globalReducer';
-import dataReducer from './dataReducer';
+import globalReducer from './globalSlice';
+import userReducer from './userSlice';
+import { configureStore } from "@reduxjs/toolkit";
 
 export default function initStore(){
-    const reducer = combineReducers({
-        globalStatus: globalReducer,
-        serverData: dataReducer
-    });
-
-    return createStore(reducer, applyMiddleware(thunk))
+    return configureStore({
+        reducer: {
+            global: globalReducer,
+            user: userReducer
+        },
+        middleware: getDefaultMiddleware=>{
+            return getDefaultMiddleware({
+                thunk: true
+            })
+        }
+    })
 }
