@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Input } from 'antd';
-import './index.scss';
+import './index.less';
 
 function Router2(){
     const [num, setNum] = useState(0);

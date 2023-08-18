@@ -17,36 +17,14 @@ let modules = {
                 {
                     loader: 'babel-loader'
                 },
-                {
-                    loader: "eslint-loader"
-                }
+                // {
+                //     loader: "eslint-loader"
+                // }
             ]
         },
         {
-            test: /^((?!\.module).)*(\.scss$|\.css$)/,
-            exclude: [
-                /(node_modules)/
-            ],
-            use: getScssModule(false)
-        },
-        //对于scss文件以module.scss结尾的开启CSSModule
-        {
-            test: /\.module\.(scss$|css$)/,
-            exclude: [
-                /(node_modules)/
-            ],
-            use: getScssModule(true)
-        },
-        {
-            test: /\.less$/,
-            use: ['style-loader', 'css-loader', {
-                loader: 'less-loader',
-                options: {
-                    lessOptions: {
-                        javascriptEnabled: true
-                    }
-                }
-            }],
+            test: /\.(less$|css$)/,
+            use: getLessModule(false)
         },
         {
             test: /\.(woff|svg|eot|ttf)$/,
@@ -75,7 +53,7 @@ let modules = {
     ]
 };
 
-function getScssModule(cssModule) {
+function getLessModule(cssModule) {
     return [
         (prod === 'production' ? {
             loader: MiniCssExtractPlugin.loader,
@@ -87,17 +65,22 @@ function getScssModule(cssModule) {
             loader: 'css-loader',
             options: {
                 modules: cssModule || false, //开启CSS Modules
-                // importLoaders: 2 //作用是用于配置css-loader作用于 @import 的资源之前需要经过其他loader的个数
             }
         },
-        'sass-loader',
-        //注入全局scss变量文件，不需要每个文件一一引入
         {
-            loader: 'sass-resources-loader',
+            loader: 'less-loader',
             options: {
-                resources: [
-                    path.resolve(__dirname, '../src/style/' + 'varible.scss'),
-                    path.resolve(__dirname, '../src/style/' + 'mixin.scss'),
+                lessOptions: {
+                    javascriptEnabled: true,
+                    implementation: require('less'),
+                }
+            }
+        },
+        {
+            loader: 'style-resources-loader',
+            options: {
+                patterns: [
+                    path.resolve(__dirname, '../src/style/varible.less')
                 ]
             }
         }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { controlTopMenu } from '@src/redux/globalSlice';
 import userApi from "../../../api/user";
-import './index.scss';
+import './index.less';
 
 export default function Header() {
     const { hideTopMenu } = useSelector(state=>{ return state.global });
@@ -22,7 +22,7 @@ export default function Header() {
             {
                 hideTopMenu ? '隐藏' : '显示'
             }
-            <button onClick={ ()=>dispatch(controlTopMenu(!hideTopMenu)) }>加载</button>
+            <button onClick={ ()=>dispatch(controlTopMenu(!hideTopMenu)) }>切换</button>
         </div>
     )
 }

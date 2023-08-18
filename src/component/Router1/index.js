@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Input, Button} from 'antd';
-import styles from './index.module.scss';
+import styles from './index.module.less';
 import {Link} from "react-router-dom";
 
 export default function Router1() {

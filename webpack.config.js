@@ -22,10 +22,12 @@ for(let key in proxyMap){
     }
 }
 let devServer = {
-    contentBase: path.join(__dirname, paths.output),
-    port: 3000,
+    static: {
+        directory: path.join(__dirname, 'public'),
+    },
+    compress: true,
+    port: 9000,
     host: 'localhost', //设置为0.0.0.0时表示用本机ip访问
-    inline:true,
     hot:true,
     https: false,
     historyApiFallback: true,  //本地开发路由请求指向index.html 非hash路由时的问题
