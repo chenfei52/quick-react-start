@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import {HashRouter, Route, Routes} from "react-router-dom";
-import BasicLayout from "./component/BasicLayout";
-import {Loading, Router1, Router2} from "./component/component";
+import BasicLayout from "./page/BasicLayout";
+import {Loading, Router1, Router2} from "./page/component";
 
 export default function AllRoutes(){
     return (

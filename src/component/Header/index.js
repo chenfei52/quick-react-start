@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { controlTopMenu } from '@src/redux/globalSlice';
-import userApi from "../../../api/user";
+import userApi from "../../api/user";
 import './index.less';
 
 export default function Header() {

@@ -4,8 +4,8 @@
 
 import React, { lazy } from 'react';
 
-export Header from './common/Header';
-export Loading from './common/Loading';
+export Header from '../component/Header';
+export Loading from '../component/Loading';
 
 
 export const Router1 = lazy(() => import(/* webpackChunkName: "router1" */ './Router1'));
