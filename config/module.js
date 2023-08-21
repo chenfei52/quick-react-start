@@ -17,9 +17,9 @@ let modules = {
                 {
                     loader: 'babel-loader'
                 },
-                // {
-                //     loader: "eslint-loader"
-                // }
+                {
+                    loader: "eslint-loader"
+                }
             ]
         },
         {

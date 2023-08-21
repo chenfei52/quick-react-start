@@ -5,7 +5,7 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-// import {ReactQueryDevtools} from "react-query-devtools";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import initStore from '@src/redux/initStore';
 import ReactDom from 'react-dom/client';
 import AllRoutes from './AllRoutes';
@@ -28,6 +28,6 @@ ReactRoot.render(
         <Provider store={store}>
             <AllRoutes/>
         </Provider>
-        {/*<ReactQueryDevtools initialIsOpen={false} />*/}
+        <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
 );

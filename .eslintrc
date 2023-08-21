@@ -1,11 +1,11 @@
 {
     "parser": "babel-eslint",
     "rules": {
-        "no-console": 1,
+        "no-console": 0,
         "react-hooks/rules-of-hooks": 2,
         "react/no-unknown-property": 0,
         "react/prop-types": 0,
-        "no-unused-vars": 1,
+        "no-unused-vars": 0,
         "no-debugger": 1
     },
     "plugins": [

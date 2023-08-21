@@ -23,6 +23,7 @@ module.exports = {
         path: __dirname + paths.vendorPath,
         library: '[name]'
     },
+    mode: 'production',  // development | production
 
     plugins: [
         new webpack.DllPlugin({

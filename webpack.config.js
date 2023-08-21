@@ -36,23 +36,26 @@ let devServer = {
 
 let optimization = { //懒加载防止多次打包同一个模块
     splitChunks: {
+        automaticNameDelimiter: '~', //生成文件名称的间隔符
         chunks: 'async', //async(只从异步加载得模块（动态加载import()）里面进行拆分)、initial(表示只从入口模块进行拆分)和all
         minSize: 0, //表示在压缩前要满足的最小模块大小
         minChunks: 1, //表示被引用次数
         maxAsyncRequests: 5, //最大的按需(异步)加载次数
         maxInitialRequests: 3, //最大的初始化加载次数
-        name: true,
+        name: false,
         cacheGroups: { //缓存组 可以任意增加 满足任意条件即可 key值即为名字前缀
             antd: {
                 test: /node_modules\\antd|node_modules\\@ant-design/,  //指定路径
                 priority: 30, //权重 同时满足时的优先级
-                name: "antd",
+                name: 'antd',
+                filename: '[name].js',
                 enforce: true
             },
             vendors: {
                 test: /node_modules/,  //指定路径
                 priority: 20, //权重 同时满足时的优先级
-                name: "common"
+                name: 'common',
+                filename: '[name].js',
             },
             default: {
                 minChunks: 2, //至少有幾個chunk引入才进行拆分
@@ -67,11 +70,23 @@ let optimization = { //懒加载防止多次打包同一个模块
     },
     //webpack4 默认内置使用 terser-webpack-plugin 插件压缩优化代码，而该插件使用 terser 来缩小 JavaScript
     //terser 使用多进程并行运行来提高构建速度
+    minimize: true,
     minimizer: [
         new TerserPlugin({
             parallel: true,
+            extractComments: false,
+            include: './src/'
         }),
     ],
+
+    // minimize: true,
+    // minimizer: [
+    //     new TerserPlugin({
+    //         parallel: true,
+    //         extractComments: false,
+    //         include: /src/,
+    //     }),
+    // ],
 };
 
 switch(process.env.NODE_ENV){
