@@ -9,7 +9,8 @@ import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import initStore from '@src/redux/initStore';
 import ReactDom from 'react-dom/client';
 import AllRoutes from './AllRoutes';
-import './style/varible.less';
+import './style/reset.less';
+import './style/style.less';
 
 const store = initStore();
 const queryClient = new QueryClient({

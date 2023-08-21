@@ -80,7 +80,8 @@ function getLessModule(cssModule) {
             loader: 'style-resources-loader',
             options: {
                 patterns: [
-                    path.resolve(__dirname, '../src/style/varible.less')
+                    path.resolve(__dirname, '../src/style/varible.less'),
+                    path.resolve(__dirname, '../src/style/mixin.less'),
                 ]
             }
         }
